@@ -13,4 +13,25 @@
 * Nested loops
 
 ### O(log n):
+* logarithmic
+* Slows down at some point
+* Binary Search
+  * Start in middle second half, then search next half to reduce number of lookups
+
+### O(2^n):
+* Opposite of log n
+* Not scaleable
+* 
+### Arrays:
+* Strengths:
+  * Access by index
+* Weaknesses:
+  * Some languages you need to allocate space
+
+### Linked Lists:
+* Store objects in sequence
+* o(n) Head to Tail
+* Each node references the next node
+* Insert at begining and end O(1)
+* Insert in the middle is O(n)
 * 
