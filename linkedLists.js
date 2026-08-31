@@ -1,14 +1,14 @@
 // Piece of data - val
 // Reference to the next node - next
 
-class Node {
+export class Node {
   constructor(val) {
     this.val = val;
     this.next = null;
   }
 }
 
-class SingleyLinkedList {
+export class singlyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -128,6 +128,30 @@ class SingleyLinkedList {
     }
   }
 
+  indexOf(value) {
+    let current = this.head;
+    let index = 0;
+
+    while (current) {
+      if (current.val === value) {
+        console.log(`The value ${value} is at index ${index}.`);
+        return index;
+      }
+      current = current.next;
+      index++;
+    }
+
+    console.log(`The value ${value} is not in the linked list.`);
+    return -1;
+  }
+
+  contains(value) {
+    if (this.indexOf(value) !== -1) {
+      return true;
+    }
+    return false;
+  }
+
   remove(index) {
     if (index < 0 || index >= this.length) {
       return undefined;
@@ -179,8 +203,8 @@ class SingleyLinkedList {
 // first.next.next.next = new Node("are")
 // first.next.next.next.next = new Node("you")
 
-let list = new SingleyLinkedList();
-list.push(1);
-list.push(2);
-list.push(3);
-list.push(4);
+// let list = new SingleyLinkedList();
+// list.push(1);
+// list.push(2);
+// list.push(3);
+// list.push(4);
