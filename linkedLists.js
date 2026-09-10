@@ -185,6 +185,31 @@ export class singlyLinkedList {
     return this;
   }
 
+  getKthFromEnd(k) {
+    if (this.length === 0) {
+      console.error("The linked list is empty.");
+      return null;
+    }
+
+    let a = this.head;
+    let b = this.head;
+
+    for (let i = 0; i < k - 1; i++) {
+      b = b.next;
+      if (b == null) {
+        console.error(
+          "The value of k is greater than the length of the linked list.",
+        );
+        return null;
+      }
+    }
+    while (b != this.tail) {
+      a = a.next;
+      b = b.next;
+    }
+    return a.val;
+  }
+
   print() {
     let arr = [];
     let current = this.head;
@@ -196,15 +221,3 @@ export class singlyLinkedList {
     console.log("LinkedList =>", arr);
   }
 }
-
-// var first = new Node("Hi")
-// first.next = new Node("there")
-// first.next.next = new Node("how")
-// first.next.next.next = new Node("are")
-// first.next.next.next.next = new Node("you")
-
-// let list = new SingleyLinkedList();
-// list.push(1);
-// list.push(2);
-// list.push(3);
-// list.push(4);
