@@ -7,6 +7,7 @@ list.push("20");
 list.push("30");
 list.push("40");
 list.push("50");
+list.push("60");
 list.print();
-let result = list.getKthFromEnd(2);
+const result = list.printMiddle();
 console.log(result);
