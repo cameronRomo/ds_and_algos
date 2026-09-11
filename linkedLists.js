@@ -211,25 +211,17 @@ export class singlyLinkedList {
   }
 
   printMiddle() {
-    if (this.length === 0) {
-      console.error("The linked list is empty.");
-      return null;
-    } else if (this.length % 2 === 1) {
-      let middleIndex = Math.floor(this.length / 2);
-      let middleNode = this.get(middleIndex);
-      console.log(
-        `The linked list has an odd number of nodes. The middle node is at index ${middleIndex} with a value of ${middleNode.val}.`,
-      );
-      return middleNode;
-    } else if (this.length % 2 === 0) {
-      let middleIndex1 = this.length / 2 - 1;
-      let middleIndex2 = this.length / 2;
-      let middleNode1 = this.get(middleIndex1).val;
-      let middleNode2 = this.get(middleIndex2).val;
-      console.log(
-        `The linked list has an even number of nodes. The middle nodes are at indices ${middleIndex1} and ${middleIndex2} with values of ${middleNode1.val} and ${middleNode2.val}.`,
-      );
-      return [middleNode1, middleNode2];
+    let a = this.head;
+    let b = this.head;
+    while (b !== this.tail && b.next !== this.tail) {
+      b = b.next.next;
+      a = a.next;
+    }
+
+    if (b === this.tail) {
+      console.log(a.val);
+    } else {
+      console.log(a.val + ", " + a.next.val);
     }
   }
 
