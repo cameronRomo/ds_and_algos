@@ -8,7 +8,7 @@ export class Node {
   }
 }
 
-export class singlyLinkedList {
+export class SinglyLinkedList {
   constructor() {
     this.head = null;
     this.tail = null;

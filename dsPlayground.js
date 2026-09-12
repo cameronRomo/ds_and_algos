@@ -1,6 +1,6 @@
-import { singlyLinkedList } from "./linkedLists.js";
+import { SinglyLinkedList } from "./linkedLists.js";
 
-const list = new singlyLinkedList();
+const list = new SinglyLinkedList();
 
 list.push("10");
 list.push("20");
