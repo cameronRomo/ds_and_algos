@@ -133,5 +133,101 @@ describe('SinglelyLinkedList', () => {
 
       assert.equal(list.head.val, 1);
     });
+
+    it('decrements length by 1', () => {
+      list.push(1);
+      list.push(2);
+
+      list.pop();
+
+      assert.equal(list.length, 1);
+    });
+
+    it('correctly empties the list after popping every node', () => {
+      list.push(1);
+      list.push(2);
+
+      list.pop();
+      list.pop();
+
+      assert.equal(list.head, null);
+      assert.equal(list.tail, null);
+      assert.equal(list.length, 0);
+    });
+  });
+
+  describe('shift', () => {
+    it('returns undefined when the list is empty', () => {
+      const result = list.shift();
+
+      assert.equal(result, undefined);
+    });
+
+    it('does not decrement length below zero on an empty list', () => {
+      list.shift();
+
+      assert.equal(list.length, 0);
+    });
+
+    it('removes and returns the only node, resetting the head and tail to null', () => {
+      list.push(1);
+
+      const result = list.shift();
+
+      assert.equal(result.val, 1);
+      assert.equal(list.head, null);
+      assert.equal(list.tail, null);
+      assert.equal(list.length, 0);
+    });
+
+    it('removes and returns the first node when multiple nodes exist', () => {
+      list.push(1);
+      list.push(2);
+      list.push(3);
+
+      list.shift();
+
+      assert.equal(list.head.val, 2);
+    });
+    
+    it('leaves tail untouched when shifting a multi-node list', () => {
+      list.push(1);
+      list.push(2);
+      list.push(3);
+
+      list.shift();
+
+      assert.equal(list.tail.val, 3);
+    });
+
+    it('decrements length by 1', () => {
+      list.push(1);
+      list.push(2);
+
+      list.shift();
+
+      assert.equal(list.length, 1);
+    });
+
+    it('correctly empties the list after shifting every node', () => {
+      list.push(1);
+      list.push(2);
+
+      list.shift();
+      list.shift();
+
+      assert.equal(list.head, null);
+      assert.equal(list.tail, null);
+      assert.equal(list.length, 0);
+    });
+
+    it('does not null out the returned node\'s next pointer', () => {
+      list.push(1);
+      list.push(2);
+
+      const result = list.shift();
+
+      assert.equal(result.next.val, 2);
+    });
   });
 });
