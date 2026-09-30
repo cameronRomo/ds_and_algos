@@ -8,7 +8,7 @@ export class Node {
   }
 }
 
-export class SinglyLinkedList {
+export class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
@@ -108,18 +108,18 @@ export class SinglyLinkedList {
   }
 
   insert(index, value) {
-    if (index < 0 || index > this.length) {
+    if (index < 0 || index > this.length - 1) {
       console.error(
         "The index you entered should be greater than zero, and have a corresponding node.",
       );
       return false;
-    } else if (index === this.length) {
+    } else if (index === this.length - 1) {
       return !!this.push(value);
     } else if (index === 0) {
       return !!this.unshift(value);
     } else {
       let newNode = new Node(value);
-      let prev = this.get(index--);
+      let prev = this.get(index - 1);
 
       newNode.next = prev.next;
       prev.next = newNode;
@@ -153,7 +153,7 @@ export class SinglyLinkedList {
   }
 
   remove(index) {
-    if (index < 0 || index >= this.length) {
+    if (index < 0 || index > this.length - 1) {
       return undefined;
     } else if (index === this.length - 1) {
       return this.pop();
@@ -211,6 +211,11 @@ export class SinglyLinkedList {
   }
 
   printMiddle() {
+    if (this.length === 0) {
+      console.error("The linked list is empty.");
+      return null;
+    }
+    
     let a = this.head;
     let b = this.head;
     while (b !== this.tail && b.next !== this.tail) {
@@ -220,8 +225,10 @@ export class SinglyLinkedList {
 
     if (b === this.tail) {
       console.log(a.val);
+      return a.val;
     } else {
       console.log(a.val + ", " + a.next.val);
+      return [a.val, a.next.val];
     }
   }
 
